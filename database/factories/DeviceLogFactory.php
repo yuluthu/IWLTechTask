@@ -18,7 +18,10 @@ class DeviceLogFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'device_id' => 1,
+            'battery_charge' => fake()->numberBetween(1, 100),
+            'sensor_life' => fake()->numberBetween(1, 100),
+            'status' => 1,
         ];
     }
 }

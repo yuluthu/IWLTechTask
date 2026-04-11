@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Order>
+ * @extends Factory<Product>
  */
-class OrderFactory extends Factory
+class ProductFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,9 +18,7 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'tenant_id' => 1,
-            'device_id' => 1,
-            'delivery_date' => random_int(1, 5) == 1 ? fake()->dateTimeBetween('-15 week', '-1 weeks') : null,
+            'name' => 'Intellisonde DI',
             'status' => 1,
         ];
     }

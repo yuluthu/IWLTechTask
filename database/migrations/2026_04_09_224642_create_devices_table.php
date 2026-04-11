@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
+            $table->integer('tenant_id');
+            $table->integer('location_id');
+            $table->integer('product_id');
+            $table->uuid('hardware_id');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

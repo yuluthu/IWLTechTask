@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Device;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class DeviceController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        $deviceList = Device::all();
-
-        return $deviceList;
+        //
     }
 
     /**
@@ -28,15 +26,15 @@ class DeviceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Device $device)
+    public function show(Product $product)
     {
-        return $device;
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Device $device)
+    public function update(Request $request, Product $product)
     {
         //
     }
@@ -44,7 +42,7 @@ class DeviceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Device $device)
+    public function destroy(Product $product)
     {
         //
     }

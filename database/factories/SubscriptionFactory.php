@@ -18,7 +18,9 @@ class SubscriptionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'device_id' => 1,
+            'expiry_date' => fake()->dateTimeBetween('+1 week', '+10 weeks'),
+            'status' => 1,
         ];
     }
 }

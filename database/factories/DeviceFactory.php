@@ -18,7 +18,10 @@ class DeviceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'tenant_id' => 1,
+            'location_id' => 1,
+            'hardware_id' => fake()->uuid(),
+            'status' => 1,
         ];
     }
 }

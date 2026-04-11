@@ -1,15 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\DeviceController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function (Request $request) {
-    return response([
-        'success' => true,
-        'message' => 'Hello World',
-    ], 200);
+// v1 API
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::apiResource('/v1/devices', DeviceController::class);
 });
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');

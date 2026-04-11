@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->integer('device_id');
+            $table->date('expiry_date');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }
