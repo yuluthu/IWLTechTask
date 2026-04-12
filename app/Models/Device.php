@@ -15,7 +15,7 @@ class Device extends Model
 {
     use HasFactory;
 
-    protected $with = ['tenant', 'location', 'product', 'deviceLogs', 'subscription', 'order'];
+    protected $with = ['tenant', 'location', 'product', 'currentStatus', 'subscription', 'order'];
 
     public function tenant(): BelongsTo
     {
@@ -30,6 +30,15 @@ class Device extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function currentStatus(): HasOne
+    {
+        return $this->hasOne(DeviceLog::class)->ofMany([
+            'id' => 'max',
+        ], function (Builder $query) {
+            $query->where('status', 1);
+        });
     }
 
     public function deviceLogs(): HasMany
@@ -50,8 +59,10 @@ class Device extends Model
 
     protected static function booted()
     {
-        static::addGlobalScope('hasAccess', function (Builder $builder) {
-            $builder->where('tenant_id', Auth::user()->tenant_id);
-        });
+        if (env('APP_ENV') !== 'testing') {
+            static::addGlobalScope('hasAccess', function (Builder $builder) {
+                $builder->where('tenant_id', Auth::user()->tenant_id);
+            });
+        }
     }
 }

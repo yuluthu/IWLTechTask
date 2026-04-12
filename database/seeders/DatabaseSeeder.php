@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => Hash::make('password'),
+            'tenant_id' => $tenant->id,
         ]);
 
         $product = Product::factory()->create();
@@ -82,5 +83,22 @@ class DatabaseSeeder extends Seeder
 
         $apiToken = $user->createToken('api');
         $this->command->info('API Token for sample user: '.$apiToken->plainTextToken);
+
+        $secondTenant = Tenant::factory()->create();
+        $secondLocation = Location::factory()->create([
+            'name' => 'Avenue du Président René Coty',
+        ]);
+
+        // a device for the second tenant that the first user should not be able to access
+        $secondTenantDevice = Device::factory()
+            ->for($secondTenant)
+            ->for($secondLocation)
+            ->for($product)
+            ->hasSubscription()
+            ->hasDeviceLogs(2)
+            ->create();
+
+        $this->command->info('ID of inaccessible device: '.$secondTenantDevice->id);
+
     }
 }
