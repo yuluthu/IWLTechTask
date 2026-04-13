@@ -19,11 +19,13 @@ To build this I am using a plain ubuntu installation on a DO droplet
 15. start the vite server `npm run dev`
 16. in a separate terminal, serve the laravel app, host and port only needed if not remote `php artisan serve --host<your ip here> --port<your port here>`
 
-API Endpoints:
+    I have included a Postman collection with the listed endpoints to aid in testing:
+
 - GET /api/v1/devices - lists all devices the user can access
 - GET /api/v1/devices/{device} - lists all info about a specific device
 - GET /api/v1/devices/{device}/status - retrieves the current status of a specific device (only the information for the provided widget)
 - POST /api/v1/devices/{device}/telemetry - adds a new device log record using the provided metrics. the request body format must be supplied as JSON in the below format:
+
 
 ```
 {

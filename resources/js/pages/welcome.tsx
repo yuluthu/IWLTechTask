@@ -8,7 +8,27 @@ export default function Welcome({
     canRegister?: boolean;
 }) {
     const { auth } = usePage().props;
+    const orderOne= {
+        "id": 1,
+        "tenant_id": 1,
+        "device_id": 3,
+        "delivery_date": null,
+        "status": 1,
+        "created_at": "2026-04-13T15:13:25.000000Z",
+        "updated_at": "2026-04-13T15:13:25.000000Z"
+    };
 
+    const orderTwo= {
+        "id": 1,
+        "tenant_id": 1,
+        "device_id": 3,
+        "delivery_date": "2026-04-13T15:13:25.000000Z",
+        "status": 1,
+        "created_at": "2026-04-13T15:13:25.000000Z",
+        "updated_at": "2026-04-13T15:13:25.000000Z"
+    };
+
+    const orderThree = null;
     return (
         <>
             <Head title="Welcome">
@@ -51,7 +71,9 @@ export default function Welcome({
                 <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
                     <main className="flex w-full max-w-[335px] flex-col-reverse lg:max-w-4xl lg:flex-row">
                         <div className="flex-1 rounded-br-lg rounded-bl-lg bg-white p-6 pb-12 text-[13px] leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-20 dark:bg-[#161615] dark:text-[#EDEDEC] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
-                            <DeviceCard title="title" subtitle="subtitle" batteryDays={10} sensorPackDays={5} status="alert" />
+                            <DeviceCard locationName="Avenue du Président René Coty" productName="Intellisonde DI" order={orderOne} batteryCharge={12} sensorLife={32} isSubscribed={true} lastUpdate={new Date("2026-04-12T16:13:25.000000Z")} />
+                            <DeviceCard locationName="Avenue du Président René Coty" productName="Intellisonde DI" order={orderTwo} batteryCharge={38} sensorLife={56} isSubscribed={false} lastUpdate={new Date("2026-04-11T15:13:25.000000Z")} />
+                            <DeviceCard locationName="Avenue du Président René Coty" productName="Intellisonde DI" order={orderThree} batteryCharge={79} sensorLife={63} isSubscribed={true} lastUpdate={new Date("2026-04-13T15:13:25.000000Z")} />
                         </div>
                     </main>
                 </div>
